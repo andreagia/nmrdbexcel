@@ -37,6 +37,8 @@ services:
 #      MYSQL_ROOT_PASSWORD: nE5kMc7JCGNqwDQN
   postgres_db:
     image: 'postgres:14.5-alpine'
+    #volumes:
+    #  - local_dir:/var/lib/postgresql
     container_name: db
     environment:
       - POSTGRES_USER=compose-postgres
