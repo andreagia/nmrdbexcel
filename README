@@ -1,0 +1,4 @@
+docker run -p 3306:3306 --name mysqld -e MYSQL_ROOT_PASSWORD=and1217 -e MYSQL_DATABASE=testdb -d mysql:latest
+docker logs mysqld
+docker stop mysqld
+docker rm mysqld

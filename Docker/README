@@ -1,0 +1,9 @@
+Install Docker and docker-compose
+copy jar from target
+cp ../target/nmrdbexcel-0.0.1-SNAPSHOT.jar .
+
+run:
+docker-compose up
+
+connect to:
+http://localhost:8080/frontend

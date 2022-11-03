@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  app:
+    #image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - postgres_db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
+#      - SPRING_DATASOURCE_URL=jdbc:mysql://maria_db:3306/java_to_dev_app_db
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+#      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.mariadb.jdbc.Driver
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+      - SPRING_DATASOURCE_HIKARI_AUTO_COMMIT=false
+#       spring.datasource.hikari.auto-commit=false
+#      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#        spring.jpa.properties.hibernate.format_sql=true
+    ports:
+      - "8080:8080"
+
+#  maria_db:
+#    image: "mariadb:10.5.8"
+#    restart: always
+#    ports:
+#      - "3306:3306"
+#    environment:
+#      MYSQL_DATABASE: java_to_dev_app_db
+#      MYSQL_USER: java_to_dev
+#      MYSQL_PASSWORD: nE5kMc7JCGNqwDQM
+#      MYSQL_ROOT_PASSWORD: nE5kMc7JCGNqwDQN
+  postgres_db:
+    image: 'postgres:14.5-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
