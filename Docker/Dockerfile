@@ -1,4 +1,5 @@
 FROM bitnami/git AS git
+RUN ls
 RUN git clone https://github.com/andreagia/nmrdbexcel.git
 
 FROM maven AS builder

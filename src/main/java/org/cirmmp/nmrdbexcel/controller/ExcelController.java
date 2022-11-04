@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://localhost:3000","http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:3000","http://localhost:8080","http://141.2.128.223:8080"})
 @Controller
 @RequestMapping("/api/excel")
 public class ExcelController {
